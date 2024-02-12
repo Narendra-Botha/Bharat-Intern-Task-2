@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #converter {
+            margin: 20px auto;
+            width: 300px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="converter">
+        <h2>Temperature Converter</h2>
+        <input type="number" id="temperature" placeholder="Enter temperature">
+        <select id="unit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            var temperature = parseFloat(document.getElementById("temperature").value);
+            var unit = document.getElementById("unit").value;
+            var result;
+
+            switch (unit) {
+                case "celsius":
+                    result = temperature * 9 / 5 + 32;
+                    document.getElementById("result").innerHTML = temperature + "°C = " + result + "°F";
+                    break;
+                case "fahrenheit":
+                    result = (temperature - 32) * 5 / 9;
+                    document.getElementById("result").innerHTML = temperature + "°F = " + result + "°C";
+                    break;
+                case "kelvin":
+                    result = temperature + 273.15;
+                    document.getElementById("result").innerHTML = temperature + "K = " + result + "°C";
+                    break;
+                default:
+                    document.getElementById("result").innerHTML = "Invalid unit";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
